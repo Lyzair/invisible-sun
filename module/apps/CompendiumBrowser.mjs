@@ -55,7 +55,7 @@ export class CompendiumBrowser extends HandlebarsApplicationMixin(ApplicationV2)
   /** Every pack this system ships. */
   get #systemPacks() {
     return game.packs.filter(p => p.metadata.packageName === game.system.id
-      && p.metadata.type === "Item");
+      && p.metadata.type === "Item" && p.visible);
   }
 
   /** The document types present in the packs being searched. */
