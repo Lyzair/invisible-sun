@@ -87,7 +87,9 @@ export class ActionMovement {
      * in the refusal hook because ending somebody's go is a consequence of a
      * move that took place, and a movement rejected further down the chain
      * would otherwise have cost them their action for nothing. */
-    Hooks.on("moveToken", async (document, movement) => {
+    Hooks.on("moveToken", async (document, movement, operation, user) => {
+      // The hook fires on every client, and only the mover's may end the turn.
+      if (!user?.isSelf) return;
       const { allowed, spends } = this.judge(document, movement);
       if (!allowed || !spends) return;
 
