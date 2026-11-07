@@ -43,7 +43,9 @@
       
       <div class="form-group">
         <label>{{localize "ISUN.Range"}}</label>
-        <input type="text" name="system.range" value="{{system.range}}" />
+        <select name="system.range">
+          {{selectOptions config.ranges selected=system.range localize=true}}
+        </select>
       </div>
       
       <div class="form-group">
